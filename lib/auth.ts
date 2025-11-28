@@ -26,6 +26,7 @@ export const authOptions: NextAuthOptions = {
 
           if (!user) {
             console.error("User not found:", email);
+            // Don't reveal if user exists or not for security
             return null;
           }
 
@@ -43,6 +44,8 @@ export const authOptions: NextAuthOptions = {
             console.error("Invalid password for user:", email);
             return null;
           }
+
+          console.log("✅ Successful login:", email, "Role:", user.role);
 
           return {
             id: user.id,

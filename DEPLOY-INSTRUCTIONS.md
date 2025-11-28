@@ -53,6 +53,6 @@ Since Vercel Dashboard requires GitHub for import, use CLI with this workaround:
 4. Go to **Deployments** → **Redeploy** the latest deployment
 
 ## Admin Login Credentials
-- Email: `abdoulkarim@furniture.com`
-- Password: `trawally281986`
+- Email: `traubaid@gmail.com`
+- Password: `trawally@281986`
 

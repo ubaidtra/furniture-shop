@@ -51,8 +51,8 @@ Your application is available at:
 4. **Admin Login**
    - ✅ Go to `/login`
    - ✅ Login with admin credentials:
-     - Email: `abdoulkarim@furniture.com`
-     - Password: `trawally281986`
+     - Email: `traubaid@gmail.com`
+     - Password: `trawally@281986`
    - ✅ Verify admin dashboard loads
 
 5. **Products**
@@ -77,8 +77,8 @@ Your application is available at:
 ## 🔐 Admin Credentials
 
 **Admin Login:**
-- Email: `abdoulkarim@furniture.com`
-- Password: `trawally281986`
+- Email: `traubaid@gmail.com`
+- Password: `trawally@281986`
 
 **⚠️ Security Note:** Change the admin password after first login!
 

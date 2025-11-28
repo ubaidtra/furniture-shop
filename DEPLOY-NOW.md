@@ -69,8 +69,8 @@ If you want to connect to GitHub for automatic deployments:
 1. Visit your deployment URL
 2. Test the homepage loads
 3. Test admin login:
-   - Email: `abdoulkarim@furniture.com`
-   - Password: `trawally281986`
+   - Email: `traubaid@gmail.com`
+   - Password: `trawally@281986`
 
 ## Alternative: CLI Method (if dashboard doesn't work)
 

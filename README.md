@@ -61,7 +61,7 @@ npx prisma db seed
 
 After seeding, you can login with:
 
-- **Admin**: abdoulkarim@furniture.com / trawally281986
+- **Admin**: traubaid@gmail.com / trawally@281986
 - **Operator**: operator@example.com / operator123
 - **Customer**: customer@furniture.com / customerbuy
 
