@@ -22,9 +22,12 @@ export async function POST(request: NextRequest) {
       );
     }
 
+    // Normalize email to lowercase for case-insensitive comparison
+    const normalizedEmail = email.toLowerCase().trim();
+
     // Check if user already exists
     const existingUser = await prisma.user.findUnique({
-      where: { email },
+      where: { email: normalizedEmail },
     });
 
     if (existingUser) {
@@ -61,7 +64,7 @@ export async function POST(request: NextRequest) {
       const hashedPassword = await bcrypt.hash(password, 10);
       const user = await prisma.user.create({
         data: {
-          email,
+          email: normalizedEmail,
           name,
           password: hashedPassword,
           role: "ADMIN",
@@ -95,7 +98,7 @@ export async function POST(request: NextRequest) {
     // Create customer user
     const user = await prisma.user.create({
       data: {
-        email,
+        email: normalizedEmail,
         name,
         password: hashedPassword,
         contact,
@@ -115,10 +118,32 @@ export async function POST(request: NextRequest) {
       { message: "Account created successfully", user },
       { status: 201 }
     );
-  } catch (error) {
+  } catch (error: any) {
     console.error("Error creating user:", error);
+    
+    // Provide more specific error messages
+    if (error.code === 'P2002') {
+      // Prisma unique constraint violation
+      return NextResponse.json(
+        { error: "User with this email already exists" },
+        { status: 400 }
+      );
+    }
+    
+    if (error.message?.includes('connect') || error.message?.includes('database')) {
+      return NextResponse.json(
+        { error: "Database connection error. Please check your database configuration." },
+        { status: 500 }
+      );
+    }
+    
+    // Generic error with more details in development
+    const errorMessage = process.env.NODE_ENV === 'production' 
+      ? "Failed to create account. Please try again."
+      : `Failed to create account: ${error.message || 'Unknown error'}`;
+    
     return NextResponse.json(
-      { error: "Failed to create account" },
+      { error: errorMessage },
       { status: 500 }
     );
   }
